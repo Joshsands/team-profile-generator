@@ -5,6 +5,8 @@ const inquirer = require("inquirer");
 // const Engineer = require("./lib/Engineer");
 // const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 // arry for all the team members
 const team = [];
@@ -51,7 +53,7 @@ const addTeam = function () {
           {
             type: "input",
             name: "selectedRole",
-            message: `Please enter the team meber's ${selectedRole}`,
+            message: `Please enter the team member's ${selectedRole}`,
           },
           {
             type: "list",
@@ -90,7 +92,12 @@ const generateHTML = function () {
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+      <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
           <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
@@ -98,7 +105,7 @@ const generateHTML = function () {
       <title>Team Profile</title>
   </head>
   <body>
-  <nav class="navbar navbar-dark bg-dark mb-5">
+  <nav class="navbar navbar-dark bg-danger bg-gradient mb-5">
   <span class="navbar-brand mb-0 h1 w-100 text-center">Team Profile</span>
   </nav>
   <div class="container">
@@ -118,25 +125,57 @@ function addMemberHTML(member) {
     const id = member.getId();
     const email = member.getEmail();
 
-    let data = "";
-    
+    let card = "";
+
     if (role === "Team Manager") {
-        const officePhone = member.getOfficeNumber();
-        data = `<div class="col-6">
-              <div class="card mx-auto mb-3" style="width: 18rem">
-              <h5 class="card-header">${name}<br /><br />Manager</h5>
+      const officeNumber = member.getOfficeNumber();
+      card = `<div class="col-4">
+              <div class="card mx-auto mb-3 bg-primary" style="width: 18rem">
+              <h5 class="card-header text-center text-white text-uppercase">${name}</h5><h5 class="text-white" style="margin: 10px"><span style="font-size: 2em; color: lightblue;"><i class="fas fa-briefcase"></span></i> Manager</h5>
+              <div class="col-12">
               <ul class="list-group list-group-flush">
                   <li class="list-group-item">ID: ${id}</li>
-                  <li class="list-group-item">Email Address: ${email}</li>
-                  <li class="list-group-item">Office Phone: ${officePhone}</li>
+                  <li class="list-group-item"><a href="mailto:${email}"> Email Address: ${email}</a></li>
+                  <li class="list-group-item">Office Number: ${officeNumber}</li>
               </ul>
-              </div>
-          </div>`;
-    } else {console.log('error')}
+              <div class="card-footer"></div>
+            </div>
+            </div>
+            </div>`;
+    } else if (role === "Engineer") {
+      const gitHub = member.getGithub();
+      card = `<div class="col-4">
+            <div class="card mx-auto mb-3 bg-warning" style="width: 18rem">
+            <h5 class="card-header text-center text-white text-uppercase">${name}</h5><h5 class="text-white" style="margin: 10px"><span style="font-size: 2em; color: yellow;"><i class="fas fa-atom"></span></i> Engineer</h5>
+            <div class="col-12">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${id}</li>
+                <li class="list-group-item"><a href="mailto:${email}"> Email Address: ${email}</a></li>
+                <li class="list-group-item"><a href="https://github.com/${gitHub}"> GitHub: ${gitHub}</a></li>
+            </ul>
+            <div class="card-footer"></div>
+            </div>
+            </div>
+            </div>`;
+    } else {
+      const school = member.getSchool();
+      card = `<div class="col-4">
+                <div class="card mx-auto mb-3 bg-success" style="width: 18rem">
+                <h5 class="card-header text-center text-white text-uppercase">${name}</h5><h5 class="text-white" style="margin: 10px"><span style="font-size: 2em; color: lightgreen;"><i class="fas fa-id-badge"></span></i> Intern</h5>
+                <div class="col-12">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item"><a href="mailto:${email}"> Email Address: ${email}</a></li>
+                    <li class="list-group-item">School: ${school}</li>
+                </ul>
+                <div class="card-footer"></div>
+                </div>
+                </div>
+                </div>`;
+    }
+    console.log("TEAM MEMBER ADDED!");
 
-    console.log("adding team member");
-
-    fs.appendFile("./dist/index.html", data, function (err) {
+    fs.appendFile("./dist/index.html", card, function (err) {
       if (err) {
         return reject(err);
       }
@@ -157,7 +196,9 @@ function endHTML() {
       console.log(err);
     }
   });
-  console.log("YOUR TEAM PROFILE HAS BEEN GENERATED! FIND IT IN THE 'dist' DIRECTORY");
+  console.log(
+    "YOUR TEAM PROFILE HAS BEEN GENERATED! FIND IT IN THE 'dist' DIRECTORY"
+  );
 }
 
 generateHTML();

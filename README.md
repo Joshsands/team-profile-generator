@@ -16,6 +16,7 @@
 ![Professional README Generator Demo](./assets/snapshot.png)
 
 [USER INPUT AND FILE GENERATION DEMO VIDEO HERE](https://youtu.be/V5Nhmg0zUVs)
+
 [TESTING DEMO VIDEO HERE](https://youtu.be/yxP3g2sbh34)
 
 ## Project Description

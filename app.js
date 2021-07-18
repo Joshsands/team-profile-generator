@@ -26,16 +26,41 @@ const addTeam = function () {
         type: "input",
         name: "name",
         message: "Please enter the team member's name",
+        validate: (nameInput) => {
+          if (nameInput) {
+            return true;
+          } else {
+            console.log("Please enter a name!");
+            return false;
+          }
+        },
       },
       {
         type: "input",
         name: "id",
         message: "Please enter the team member's ID number",
+        validate: (nameInput) => {
+          if (isNaN(nameInput)) {
+            console.log("Please enter an ID!");
+            return false;
+          } else {
+            return true;
+          }
+        },
       },
       {
         type: "input",
         name: "email",
         message: "Please enter the team member's email",
+        validate: (email) => {
+          valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+          if (valid) {
+            return true;
+          } else {
+            console.log("Please enter an email!");
+            return false;
+          }
+        },
       },
     ])
     //answers used as arguments including a specific role for each type of team member
@@ -105,9 +130,15 @@ const generateHTML = function () {
       <title>Team Profile</title>
   </head>
   <body>
+  <div class="=container">
+    <div class="=row">
+        <div class="col-6 mx-auto">
   <nav class="navbar navbar-dark bg-danger bg-gradient mb-5">
   <span class="navbar-brand mb-0 h1 w-100 text-center">Team Profile</span>
   </nav>
+        </div>
+    </div>
+  </div>
   <div class="container">
   <div class="row">`;
   fs.writeFile("./dist/index.html", HTML, function (err) {
@@ -130,13 +161,13 @@ function addMemberHTML(member) {
     if (role === "Team Manager") {
       const officeNumber = member.getOfficeNumber();
       card = `<div class="col-4">
-              <div class="card mx-auto mb-3 bg-primary" style="width: 18rem">
+              <div class="card mx-auto mb-3 bg-primary" style="width: 20rem">
               <h5 class="card-header text-center text-white text-uppercase">${name}</h5><h5 class="text-white" style="margin: 10px"><span style="font-size: 2em; color: lightblue;"><i class="fas fa-briefcase"></span></i> Manager</h5>
               <div class="col-12">
               <ul class="list-group list-group-flush">
                   <li class="list-group-item">ID: ${id}</li>
-                  <li class="list-group-item"><a href="mailto:${email}"> Email Address: ${email}</a></li>
-                  <li class="list-group-item">Office Number: ${officeNumber}</li>
+                  <li class="list-group-item">Email Address:<a href="mailto:${email}"><br />${email}</a></li>
+                  <li class="list-group-item">Office Number:<br />${officeNumber}</li>
               </ul>
               <div class="card-footer"></div>
             </div>
@@ -145,13 +176,13 @@ function addMemberHTML(member) {
     } else if (role === "Engineer") {
       const gitHub = member.getGithub();
       card = `<div class="col-4">
-            <div class="card mx-auto mb-3 bg-warning" style="width: 18rem">
+            <div class="card mx-auto mb-3 bg-warning" style="width: 20rem">
             <h5 class="card-header text-center text-white text-uppercase">${name}</h5><h5 class="text-white" style="margin: 10px"><span style="font-size: 2em; color: yellow;"><i class="fas fa-atom"></span></i> Engineer</h5>
             <div class="col-12">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item"><a href="mailto:${email}"> Email Address: ${email}</a></li>
-                <li class="list-group-item"><a href="https://github.com/${gitHub}"> GitHub: ${gitHub}</a></li>
+                <li class="list-group-item">Email Address:<a href="mailto:${email}"><br />${email}</a></li>
+                <li class="list-group-item">GitHub:<a href="https://github.com/${gitHub}"><br />${gitHub}</a></li>
             </ul>
             <div class="card-footer"></div>
             </div>
@@ -160,13 +191,13 @@ function addMemberHTML(member) {
     } else {
       const school = member.getSchool();
       card = `<div class="col-4">
-                <div class="card mx-auto mb-3 bg-success" style="width: 18rem">
+                <div class="card mx-auto mb-3 bg-success" style="width: 20rem">
                 <h5 class="card-header text-center text-white text-uppercase">${name}</h5><h5 class="text-white" style="margin: 10px"><span style="font-size: 2em; color: lightgreen;"><i class="fas fa-id-badge"></span></i> Intern</h5>
                 <div class="col-12">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item"><a href="mailto:${email}"> Email Address: ${email}</a></li>
-                    <li class="list-group-item">School: ${school}</li>
+                    <li class="list-group-item">Email Address:<a href="mailto:${email}"><br />${email}</a></li>
+                    <li class="list-group-item">School:<br />${school}</li>
                 </ul>
                 <div class="card-footer"></div>
                 </div>

@@ -13,7 +13,7 @@
 7. [Questions](#questions)
 
 ## Visual Demonstration
-![Professional README Generator Demo](./demo/prg.gif)
+![Professional README Generator Demo](./assets/snapshot.png)
 
 [FULL RESOLUTION DEMO HERE](https://youtu.be/fMaig__y1lE)
 

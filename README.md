@@ -15,24 +15,24 @@
 ## Visual Demonstration
 ![Professional README Generator Demo](./assets/snapshot.png)
 
-[FULL RESOLUTION DEMO HERE](https://youtu.be/fMaig__y1lE)
+[FULL RESOLUTION DEMO HERE](https://youtu.be/V5Nhmg0zUVs)
 
 ## Project Description
-* The above screen capture demonstrates how this application works. The application prompts a user for information about their project in order to fill in sections that are normally seen on a professional README file.
+* The above snapshot shows an example of what the profile will look like after the user answers all the questions. The video link shows a full demonstration on how this application works. The application prompts a user for information about their team which will then add an individual card with that team member's information.
 
 ## Installation Instructions
-* Pull the Github repository to your local drive, open it in an IDE and enter "npm install inquirer" in the terminal to install the inquirer node modules in the root folder. 
+* Pull the Github repository to your local drive, open it in an IDE and enter "npm install inquirer" in the terminal to install the inquirer node modules in the root folder. You will also need to enter "npm install jest" if you want to run the tests.
 
 ## Usage Information
-* Open terminal and make sure you are in the "Develop" directory. Then enter "node index.js" and answer the prompts that follow. After answering all the questions the README.md file will generate in the "dist" directory.
+* Open terminal to the root directory and enter "node app" and answer the prompts that follow. After answering all the questions, the index.html file will generate with a card for each member entered.
 
 ## Contributor Guidelines
-* [Submit bugs and feature requests](https://github.com/joshsands/Professional-README-Generator/issues).
-* Review [source code changes](https://github.com/joshsands/Professional-README-Generator/pulls).
-* Review the [documentation](https://github.com/joshsands/Professional-README-Generator-docs) and make pull requests for anything from typos to new content.
+* [Submit bugs and feature requests](https://github.com/joshsands/team-profile-generator/issues).
+* Review [source code changes](https://github.com/joshsands/team-profile-generator/pulls).
+* Review the [documentation](https://github.com/joshsands/team-profile-generator-docs) and make pull requests for anything from typos to new content.
 
 ## Test Instructions
-* None
+* After you install the jest module, you can enter "npm run test" in the terminal to test the constructor functions. You can also create your own mock data to run the tests without the defined constructors in the test files.
 
 ## License Info
 Copyright 2021

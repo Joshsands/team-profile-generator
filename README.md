@@ -15,7 +15,8 @@
 ## Visual Demonstration
 ![Professional README Generator Demo](./assets/snapshot.png)
 
-[FULL RESOLUTION DEMO HERE](https://youtu.be/V5Nhmg0zUVs)
+[USER INPUT AND FILE GENERATION DEMO VIDEO HERE](https://youtu.be/V5Nhmg0zUVs)
+[TESTING DEMO VIDEO HERE](https://youtu.be/yxP3g2sbh34)
 
 ## Project Description
 * The above snapshot shows an example of what the profile will look like after the user answers all the questions. The video link shows a full demonstration on how this application works. The application prompts a user for information about their team which will then add an individual card with that team member's information.

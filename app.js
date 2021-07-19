@@ -182,7 +182,7 @@ function addMemberHTML(member) {
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
                 <li class="list-group-item">Email Address:<a href="mailto:${email}"><br />${email}</a></li>
-                <li class="list-group-item">GitHub:<a href="https://github.com/${gitHub}"><br />${gitHub}</a></li>
+                <li class="list-group-item">GitHub:<a href="https://github.com/${gitHub}" target="_blank"><br />${gitHub}</a></li>
             </ul>
             <div class="card-footer"></div>
             </div>
